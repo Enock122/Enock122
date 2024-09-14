@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELCOME TO SANG SHOPPING MALL</title>
+    <style>
+        body {
+            background-color: #0000FF; /* Blue background */
+            color: #000000; /* Black text */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff; /* White background for content */
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #000000; /* Black text for heading */
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .product {
+            background-color: #f4f4f4; /* Light grey background for products */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .product h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #000000; /* Black text for product titles */
+        }
+        .product p {
+            font-size: 1em;
+            margin: 5px 0;
+            color: #000000; /* Black text for product prices */
+        }
+        .add-to-cart {
+            background-color: #4CAF50; /* Green button */
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .add-to-cart:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            z-index: 1000;
+            width: 80%;
+            max-width: 400px;
+        }
+        .popup.show {
+            display: block;
+        }
+        .popup button {
+            background-color: #f44336; /* Red button */
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .popup button:hover {
+            background-color: #c62828; /* Darker red on hover */
+        }
+        #cart {
+            margin-top: 20px;
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        #cart h2 {
+            margin-top: 0;
+            color: #000000; /* Black text for cart title */
+        }
+        #cart ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #cart ul li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        #cart ul li button {
+            background-color: #f44336; /* Red button */
+            color: white;
+            border: none;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #cart ul li button:hover {
+            background-color: #c62828; /* Darker red on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WELCOME TO SANG SHOPPING MALL</h1>
+        <div class="grid-container">
+            <!-- Product items (10 items) -->
+            <div class="product" data-name="Product 1" data-price="1000">
+                <img src="C:/Users/Ryan/Downloads/WhatsApp Image 2024-09-14 at 09.22.59 (1).jpeg" alt="Product 1">
+                <h2>Product 1</h2>
+                <p>KSh 1000</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Product 2" data-price="1200">
+                <img src="C:/Users/Ryan/Downloads/WhatsApp Image 2024-09-14 at 09.23.01.jpeg" alt="Product 2">
+                <h2>Product 2</h2>
+                <p>KSh 1200</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Product 3" data-price="1500">
+                <img src="C:/Users/Ryan/Downloads/WhatsApp Image 2024-09-14 at 09.22.59 (1).jpeg" alt="Product 3">
+                <h2>Product 3</h2>
+                <p>KSh 1500</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Product 4" data-price="1700">
+                <img src="C:/Users/Ryan/Downloads/WhatsApp Image 2024-09-14 at 11.11.12.jpeg" alt="Product 4">
+                <h2>Product 4</h2>
+                <p>KSh 1700</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Product 5" data-price="2000">
+                <img src="C:/Users/Ryan/Downloads/WhatsApp Image 2024-09-14 at 11.11.12 (1).jpeg" alt="Product 5">
+                <h2>Product 5</h2>
+                <p>KSh 2000</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Product 6" data-price="2200">
+                <img src="C:/Users/Ryan/Downloads/WhatsApp Image 2024-09-14 at 11.11.13.jpeg" alt="Product 6">
+                <h2>Product 6</h2>
+                <p>KSh 2200</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Product 7" data-price="2500">
+                <img src="C:/Users/Ryan/Downloads/WhatsApp Image 2024-09-14 at 11.11.13 (1).jpeg" alt="Product 7">
+                <h2>Product 7</h2>
+                <p>KSh 2500</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Product 8" data-price="2700">
+                <img src="C:/Users/Ryan/Downloads/WhatsApp Image 2024-09-14 at 11.11.14.jpeg" alt="Product 8">
+                <h2>Product 8</h2>
+                <p>KSh 2700</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Product 9" data-price="3000">
+                <img src="C:/Users/Ryan/Downloads/WhatsApp Image 2024-09-14 at 11.11.14 (1).jpeg" alt="Product 9">
+                <h2>Product 9</h2>
+                <p>KSh 3000</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Product 10" data-price="3200">
+                <img src="C:/Users/Ryan/Downloads/WhatsApp Image 2024-09-14 at 11.11.14 (1).jpeg" alt="Product 10">
+                <h2>Product 10</h2>
+                <p>KSh 3200</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Shopping Cart Section -->
+        <div id="cart">
+            <h2>Shopping Cart</h2>
+            <ul id="cartItems"></ul>
+            <p id="cartTotal">Total: KSh 0</p>
+            <button onclick="proceedToPayment()">Proceed to Payment</button>
+        </div>
+
+        <!-- Sign-In Popup -->
+        <div id="signInPopup" class="popup">
+            <h2>Sign In</h2>
+            <form id="signInForm" onsubmit="signInUser(); return false;">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <br><br>
+                <input type="submit" value="Sign In">
+            </form>
+            <button onclick="closePopup('signInPopup')">Close</button>
+        </div>
+
+        <!-- Payment Popup -->
+        <div id="paymentPopup" class="popup">
+            <h2>Payment</h2>
+            <form id="paymentForm">
+                <label for="paymentMethod">Select Payment Method:</label>
+                <select id="paymentMethod" name="paymentMethod" onchange="showPaymentDetails()">
+                    <option value="creditCard">Credit/Debit Card</option>
+                    <option value="mpesa">M-Pesa</option>
+                    <option value="paypal">PayPal</option>
+                </select>
+                <div id="paymentDetails">
+                    <!-- Details for Credit/Debit Card -->
+                    <div id="creditCardDetails">
+                        <label for="cardNumber">Card Number:</label>
+                        <input type="text" id="cardNumber" name="cardNumber">
+                        <br><br>
+                        <label for="expiryDate">Expiry Date:</label>
+                        <input type="text" id="expiryDate" name="expiryDate">
+                        <br><br>
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" name="cvv">
+                    </div>
+                    <!-- Details for M-Pesa -->
+                    <div id="mpesaDetails" style="display:none;">
+                        <label for="phoneNumber">Phone Number:</label>
+                        <input type="text" id="phoneNumber" name="phoneNumber">
+                        <br><br>
+                        <label for="mpesaPin">M-Pesa PIN:</label>
+                        <input type="text" id="mpesaPin" name="mpesaPin">
+                    </div>
+                    <!-- Details for PayPal -->
+                    <div id="paypalDetails" style="display:none;">
+                        <label for="paypalEmail">PayPal Email:</label>
+                        <input type="email" id="paypalEmail" name="paypalEmail">
+                    </div>
+                </div>
+                <br>
+                <input type="button" value="Pay Now" onclick="processPayment()">
+            </form>
+            <button onclick="closePopup('paymentPopup')">Close</button>
+        </div>
+
+        <!-- Cart Update Popup -->
+        <div id="cartPopup" class="popup">
+            <p>Item added to cart!</p>
+            <button onclick="closePopup('cartPopup')">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize cart and user status
+        let cart = [];
+        let userLoggedIn = false; // Simulates whether a user is logged in
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                if (!userLoggedIn) {
+                    // Show sign-in popup
+                    document.getElementById('signInPopup').classList.add('show');
+                } else {
+                    const productElement = this.closest('.product');
+                    const name = productElement.getAttribute('data-name');
+                    const price = parseInt(productElement.getAttribute('data-price'));
+
+                    // Add to cart
+                    cart.push({ name, price });
+
+                    // Update cart display
+                    updateCart();
+
+                    // Show cart popup message
+                    document.getElementById('cartPopup').classList.add('show');
+                    
+                    // Hide popup after 2 seconds
+                    setTimeout(function() {
+                        document.getElementById('cartPopup').classList.remove('show');
+                    }, 2000);
+                }
+            });
+        });
+
+        function updateCart() {
+            const cartItemsElement = document.getElementById('cartItems');
+            const cartTotalElement = document.getElementById('cartTotal');
+            
+            // Clear existing items
+            cartItemsElement.innerHTML = '';
+
+            // Add items to cart
+            let total = 0;
+            cart.forEach((item, index) => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `${item.name}: KSh ${item.price} <button onclick="removeFromCart(${index})">Remove</button>`;
+                cartItemsElement.appendChild(listItem);
+                total += item.price;
+            });
+
+            // Update total
+            cartTotalElement.textContent = `Total: KSh ${total}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1); // Remove item from cart
+            updateCart(); // Update cart display
+        }
+
+        function proceedToPayment() {
+            // Show payment popup message
+            document.getElementById('paymentPopup').classList.add('show');
+        }
+
+        function signInUser() {
+            // Simulate user sign-in
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email && password) {
+                userLoggedIn = true; // Set user as logged in
+                document.getElementById('signInPopup').classList.remove('show'); // Hide sign-in popup
+                updateCart(); // Update cart to reflect the addition of items
+                document.getElementById('cartPopup').classList.add('show');
+                
+                // Hide cart popup after 2 seconds
+                setTimeout(function() {
+                    document.getElementById('cartPopup').classList.remove('show');
+                }, 2000);
+            }
+        }
+
+        function showPaymentDetails() {
+            const paymentMethod = document.getElementById('paymentMethod').value;
+            
+            // Hide all payment detail sections
+            document.getElementById('creditCardDetails').style.display = 'none';
+            document.getElementById('mpesaDetails').style.display = 'none';
+            document.getElementById('paypalDetails').style.display = 'none';
+            
+            // Show the relevant payment detail section
+            if (paymentMethod === 'creditCard') {
+                document.getElementById('creditCardDetails').style.display = 'block';
+            } else if (paymentMethod === 'mpesa') {
+                document.getElementById('mpesaDetails').style.display = 'block';
+            } else if (paymentMethod === 'paypal') {
+                document.getElementById('paypalDetails').style.display = 'block';
+            }
+        }
+
+        function processPayment() {
+            const paymentMethod = document.getElementById('paymentMethod').value;
+
+            if (paymentMethod === 'creditCard') {
+                const cardNumber = document.getElementById('cardNumber').value;
+                const expiryDate = document.getElementById('expiryDate').value;
+                const cvv = document.getElementById('cvv').value;
+
+                if (cardNumber && expiryDate && cvv) {
+                    alert("Payment processed successfully with Credit/Debit Card!");
+                } else {
+                    alert("Please fill in all credit card details.");
+                }
+            } else if (paymentMethod === 'mpesa') {
+                const phoneNumber = document.getElementById('phoneNumber').value;
+                const mpesaPin = document.getElementById('mpesaPin').value;
+
+                if (phoneNumber && mpesaPin) {
+                    alert("Payment processed successfully with M-Pesa!");
+                } else {
+                    alert("Please fill in all M-Pesa details.");
+                }
+            } else if (paymentMethod === 'paypal') {
+                const paypalEmail = document.getElementById('paypalEmail').value;
+
+                if (paypalEmail) {
+                    alert("Payment processed successfully with PayPal!");
+                } else {
+                    alert("Please enter your PayPal email.");
+                }
+            }
+
+            // Clear cart after payment
+            cart = [];
+            updateCart();
+            document.getElementById('paymentPopup').classList.remove('show'); // Hide payment popup
+        }
+
+        function closePopup(popupId) {
+            document.getElementById(popupId).classList.remove('show');
+        }
+    </script>
+</body>
+</html>
